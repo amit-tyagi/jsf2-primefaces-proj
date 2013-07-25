@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:view contentType="text/html">
+    <h:head>
+        <title>
+            <ui:insert name="title">
+                [Page title will be inserted here]
+            </ui:insert>
+        </title>
+        <f:facet name="first">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="pragma" content="no-cache"/>
+            <meta http-equiv="cache-control" content="no-cache"/>
+            <meta http-equiv="expires" content="0"/>
+        </f:facet>
+        <h:outputStylesheet library="css" name="app.css"/>
+        <f:facet name="last">
+            <h:outputStylesheet library="css" name="prime.css"/>
+        </f:facet>
+        <ui:insert name="javascript"/>
+    </h:head>
+
+    <h:body>
+        <p:dialog modal="true" widgetVar="statusDialog" header="Processing..."
+                  draggable="true" closable="false">
+            <p:graphicImage library="images" name="ajaxloadingbar.gif"/>
+        </p:dialog>
+
+        <p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>
+
+        <div id="container">
+            <div id="header">
+                <h1>
+                    <ui:insert name="header">
+                        <p:outputLabel value="First Page"/>
+                    </ui:insert>
+                </h1>
+            </div>
+            <div id="line"></div>
+            <div id="content">
+                <ui:insert name="content">
+                    [Template content will be inserted here]
+                </ui:insert>
+            </div>
+            <div id="footer">
+                <p:outputPanel styleClass="footer">Copyright &copy; 2013</p:outputPanel>
+            </div>
+        </div>
+    </h:body>
+
+</f:view>
+
+</html>
+
